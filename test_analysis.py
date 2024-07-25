@@ -1,4 +1,4 @@
-from src.analysis import run_analysis
+from data-analytics-app.src.analysis import run_analysis
 
 def test_run_analysis():
     results = run_analysis()
