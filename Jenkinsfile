@@ -1,17 +1,21 @@
 pipeline {
     agent any
 
+    environment {
+        PYTHONPATH = "${WORKSPACE}/data-analytics-app"
+    }
+
     stages {
         stage('Build') {
             steps {
                 script {
-                    bat 'pip install -r requirements.txt'
+                    bat 'call venv\\Scripts\\activate && pip install -r requirements.txt'
                 }
             }
         }
         stage('Test') {
             steps {
-                bat 'pytest'
+                bat 'call venv\\Scripts\\activate && pytest'
             }
         }
         stage('Docker Build') {
